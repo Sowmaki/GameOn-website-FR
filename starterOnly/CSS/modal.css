@@ -1,6 +1,6 @@
 :root {
-  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-  --font-slab: var(--font-default);
+  --font-default: "DM Sans";
+  --font-slab: 'Roboto';
   --modal-duration: 0.8s;
   --main-color: #FE142F;
   --dark-grey: #232323;
@@ -18,7 +18,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1440px;
@@ -140,7 +139,8 @@ main {
   padding: 0 7% 9.6% 7%;
 }
 
-.modal-btn {
+.modal-btn,
+.close-btn {
   background: var(--main-color);
   display: flex;
   margin: auto;
@@ -186,9 +186,11 @@ main {
 }
 
 .content {
+  height: fit-content;
   margin: 5% auto;
+  padding: 41px 39px 0 39px;
   width: 100%;
-  max-width: 500px;
+  max-width: 536px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: var(--dark-grey);
@@ -196,18 +198,39 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .modal-body {
-  padding: 15px 8%;
+  display: flex;
+  flex-direction: column;
   margin: 15px auto;
 }
 
-label {
+.merci {
+  display: none;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  font-size: 2.25rem;
+}
+
+.merci p {
+  margin-top: 319px;
+  padding: 0;
+}
+
+.merci button {
+  margin-top: 330px;
+
+}
+
+label,
+.label {
   font-family: var(--font-default);
-  font-size: 17px;
-  font-weight: normal;
+  font-size: 0.9rem;
+  font-weight: 400;
   display: inline-block;
   margin-bottom: 11px;
 }
@@ -223,18 +246,23 @@ input {
   padding: 8px;
   width: 100%;
   border-radius: 8px;
-  font-size: 20px;
-  height: 48px;
+  font-size: 1rem;
+  font-weight: 400;
+  height: 65px;
+}
+
+.formData {
+  margin-bottom: 11.6px;
 }
 
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6rem;
   color: var(--main-color);
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -248,32 +276,27 @@ input {
   border: 2px solid var(--main-color);
 }
 
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
+  font-family: var(--font-slab);
   position: relative;
   margin-left: 36px;
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 0.75rem;
+  font-weight: 400;
 }
 
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   border: 2px solid #279e7a;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
   position: absolute;
   left: -30px;
-  top: -1px;
+  top: -5px;
   transition: 0.3s;
 }
 
@@ -322,8 +345,8 @@ input[data-error]::after {
   border-bottom-color: #fff;
   border-left-color: #fff;
   transform: rotate(-55deg);
-  left: 21%;
-  top: 19%;
+  left: 30%;
+  top: 30%;
 }
 
 .close {
@@ -355,8 +378,14 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
+input.btn-submit {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: var(--main-color);
   display: block;
   margin: 0 auto;
@@ -450,7 +479,7 @@ input[data-error]::after {
   flex-direction: row;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
 }
 
@@ -512,6 +541,7 @@ input[data-error]::after {
 }
 
 .hero-img img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
