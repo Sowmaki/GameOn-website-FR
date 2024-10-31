@@ -61,4 +61,3 @@ Utilisation seule de CSS, JavaScript pur, sans jQuery, Bootstrap ou autre librai
     Compatibilité avec les dernières versions de Chrome et Firefox, ainsi que dans les versions mobile et desktop.
     Corriger les erreurs d'affichage existantes.
     Tester toutes les fonctionnalités des boutons et des entrées de formulaire (tester les valeurs correctes et incorrectes)
-
