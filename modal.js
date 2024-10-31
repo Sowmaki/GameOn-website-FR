@@ -5,7 +5,7 @@
 const myTopnav = document.getElementById("myTopnav");
 const icon = document.querySelector(".icon")
 
-// function
+// fonction EditNav qui donne la classe .responive a l'élément
 function editNav() {
 
   if (myTopnav.className === "topnav") {
@@ -15,6 +15,7 @@ function editNav() {
   }
 }
 
+//Attribution de la fonction à l'élément icon
 icon.addEventListener('click', () => {
   editNav()
 })
@@ -28,28 +29,29 @@ const closeBtn = document.querySelector(".btn-close");
 const closeCross = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
+// Fonction launchModal qui ouvre la modale
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event
-closeBtn.addEventListener("click", closeModal);
-closeCross.addEventListener("click", closeModal);
+// Ajout de la fonctionnalité aux boutons associés
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
+// Fonction closeModal qui ferme la modale
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// Ajout de la fonctionnalité au bouton (x) et au bouton "fermer"
+closeBtn.addEventListener("click", closeModal);
+closeCross.addEventListener("click", closeModal);
+
 
 /************ Form validation ************/
 
 //DOM Elements
 const myForm = document.getElementById("myForm");
-const divMerci = document.querySelector(".merci")
+const divMerci = document.querySelector(".merci");
 
 
 // Validation du formulaire
