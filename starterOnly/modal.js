@@ -1,11 +1,25 @@
+
+/*********************************************************Edit Nav ****************/
+
+// DOM Elements
+const myTopnav = document.getElementById("myTopnav");
+const icon = document.querySelector(".icon")
+
+// function
 function editNav() {
-  const myTopnav = document.getElementById("myTopnav");
+
   if (myTopnav.className === "topnav") {
     myTopnav.className += " responsive";
   } else {
     myTopnav.className = "topnav";
   }
 }
+
+icon.addEventListener('click', () => {
+  editNav()
+})
+
+/************************************************Launch Modal *************** */
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -38,32 +52,40 @@ const myForm = document.getElementById("myForm");
 const divMerci = document.querySelector(".merci")
 
 
-// Form validation
+// Validation du formulaire
 
 function validateForm(event) {
   event.preventDefault();
   let isFormValid = true;
 
-  // Error messages
+  // Parametrage des messages d'erreur
 
   formData.forEach((element) => {
+    // recuperation de l'input de chaque élément
     const input = element.querySelector("input, select, textarea");
+
+    // si l'input est vide, ou s'il n'est pas valide...
     if (!input.checkValidity()) {
+      // ...alors on met l'attribut qui permet au message d'erreur d'être visible à "true" dans l'élément.
+      // et isFormValid vaut false
       element.setAttribute("data-error-visible", "true");
       isFormValid = false;
-    } else {
+    }
+    // dans le cas contraire, on retire l'attribut.
+    else {
       element.removeAttribute("data-error-visible");
     }
   });
 
-  // Form validation message
-
+  // Affichage de messages d'erreur.
+  // Si isFormValid est bien à "true", la div de confirmation d'envoi du formuaire apparaît et le formulaire disparaît. 
   if (isFormValid) {
     divMerci.style.display = "flex";
     myForm.style.display = "none";
   }
 }
 
+// Application de la fonction validateForm() à l'évènement de soumission du formulaire, et suppression de son comportement par defaut.
 myForm.addEventListener("submit", (event) => {
   event.preventDefault();
   validateForm(event)
